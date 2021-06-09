@@ -1,0 +1,84 @@
+<div id="userslist" v-cloak>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 v-if="formData.name != ''" class="modal-title" id="exampleModalCenterTitle">Edit User Details</h5>
+          <h5 v-else class="modal-title" id="exampleModalCenterTitle">Add User Details</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <label for="inputEmail4">Full name</label>
+                <input type="text" class="form-control" id="inputEmail4" placeholder="name" v-model="formData.name">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <label for="inputEmail4">Email</label>
+                <input type="email" class="form-control" id="inputEmail4" placeholder="Email" v-model="formData.email">
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label for="inputPassword4">Password</label>
+                <input type="password" class="form-control" id="inputPassword4" placeholder="Password" v-model="formData.password">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inputAddress">Contact</label>
+              <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" v-model="formData.contact">
+            </div>
+            <div class="form-group">
+              <label for="inputAddress2">Gender</label>
+              <select name="cars" id="cars" class="form-control" v-model="formData.gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid nav">
+    <i class="fa fa-user" aria-hidden="true" style="padding-top: 6px;"></i> &nbsp;&nbsp; User Manager
+
+  </div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <!-- <th scope="col">Handle</th> -->
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="(item, index) in data" data-toggle="modal" data-target="#exampleModalCenter" @click="clickItem(item)">
+        <th scope="row">{{index + 1}}</th>
+        <td>{{item.fullName}}</td>
+        <td>{{item.emailAddress}}</td>
+        <!-- <td>test</td> -->
+        <td><i class="fa fa-trash" aria-hidden="true" style="color:red;"></i></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
