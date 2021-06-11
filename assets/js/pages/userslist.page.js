@@ -13,6 +13,11 @@ parasails.registerPage('userslist', {
     saveModel: false,
     deleteModelOpen: false,
     deleted: false,
+    allSelected: false,
+    selectedItems: [],
+
+    listView: '/userslist',
+
 
 
     formData: {
@@ -44,12 +49,56 @@ parasails.registerPage('userslist', {
   //  ╩╝╚╝ ╩ ╚═╝╩╚═╩ ╩╚═╝ ╩ ╩╚═╝╝╚╝╚═╝
   methods: {
 
+    selectAll: function() {
+
+      this.selectedItems = [];
+
+      if (!this.allSelected) {
+        for (i in this.data) {
+          this.selectedItems.push(this.data[i].id);
+        }
+      }
+    },
+
+    select: function() {
+      this.allSelected = false;
+    },
+
+
+    // PEGINATION
+    pagination: function(selectedPage, pageCount) {
+
+      var array = [],
+        j = 0;
+
+      if (selectedPage + 10 < pageCount) {
+        pageCount = selectedPage + 10;
+      }
+
+      if (selectedPage - 10 <= 0) {
+        selectedPage = 0;
+      } else {
+        selectedPage = selectedPage - 10
+      }
+
+      for (var i = selectedPage; i <= pageCount; i++) {
+        array[j] = i;
+        j++;
+      }
+
+      return array;
+
+    },
+
     removeItem: function(id) {
 
       var selectedArr = [];
       if (id) {
         selectedArr.push(id);
       }
+
+      console.log("this.selectedItems");
+      console.log(this.selectedItems);
 
       this.selectedItems = selectedArr;
 

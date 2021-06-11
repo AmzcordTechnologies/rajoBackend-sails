@@ -327,7 +327,6 @@
               </div>
             </div>
 
-
             <div class="form-group">
               <label for="inputAddress2">Gender</label>
               <select name="cars" id="cars" class="form-control" v-model="formData.gender">
@@ -336,7 +335,6 @@
                 <option value="other">Other</option>
               </select>
             </div>
-
 
           </div>
           <div class="modal-footer">
@@ -360,13 +358,14 @@
     <strong>Successfully</strong> saved!
   </div>
 
-  <div class="alert alert-success alert-dismissible fade show w-100" role="alert" v-if="deleted" id="delete-alert">
+  <div class="alert alert-danger alert-dismissible fade show w-100" role="alert" v-if="deleted" id="delete-alert">
     <strong>Successfully</strong> deleted!
   </div>
 
   <table class="table table-hover">
     <thead>
       <tr>
+        <th class="text-center"><input type="checkbox" @click="selectAll" v-model="allSelected"></th>
         <th scope="col">#</th>
         <th scope="col">Name</th>
         <th scope="col">Email</th>
@@ -376,15 +375,46 @@
     </thead>
     <tbody>
       <tr v-for="(item, index) in data" data-toggle="modal" data-target="#exampleModalCenter">
+        <td class="text-center"><input type="checkbox" class="text-center" v-model="selectedItems" @click="select" :value="item.id"></td>
         <th scope="row" @click="clickItem(item)">{{index + 1}}</th>
         <td @click="clickItem(item)">{{item.fullName}}</td>
         <td @click="clickItem(item)">{{item.emailAddress}}</td>
         <!-- <td>test</td> -->
         <td @click="removeItem(item.id)">
-          <i class="fa fa-trash" aria-hidden="true" style="color:red;"></i></td>
+          <i class="fa fa-trash" aria-hidden="true" style="color:red;"></i>
+        </td>
       </tr>
     </tbody>
   </table>
+<br><br>
+  <!-- Pegination -->
+  <nav aria-label="Page navigation example " class="table-pagination">
+    <ul class="pagination justify-content-end">
+      <ul class="pagination">
+
+        <li :class="page == 0 ? 'page-item disabled' : 'page-item'">
+          <a class="page-link" :href="listView+'?page=0'" tabindex="-1">Start</a>
+        </li>
+
+        <li :class="page == 0 ? 'page-item disabled' : 'page-item'">
+          <a class="page-link" :href="listView+'?page='+(page-1)" tabindex="-1">Previous</a>
+        </li>
+
+        <li :class="page == n ? 'page-item active' : 'page-item'" v-for="n in pagination(page,pageCount-1)">
+          <a class="page-link" :href="listView+'?page='+(n)">{{n+1}}</a>
+        </li>
+
+        <li :class="page+1 >= pageCount ? 'page-item disabled' : 'page-item'">
+          <a class="page-link" :href="listView+'?page='+(page+1)" tabindex="-1">Next</a>
+        </li>
+
+        <li :class="page+1 >= pageCount ? 'page-item disabled' : 'page-item'">
+          <a class="page-link" :href="listView+'?page='+(pageCount-1)" tabindex="-1">End</a>
+        </li>
+
+      </ul>
+    </ul>
+  </nav>
 
 </div>
 <%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
