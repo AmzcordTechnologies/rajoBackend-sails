@@ -336,6 +336,23 @@
               </select>
             </div>
 
+            <div class="form-group">
+              <label for="inputAddress2">How did you hear about us</label>
+              <select name="" class="form-control" id="" placeholder="" v-model="formData.howDidYouHearAboutUs">
+                <option value="" disabled selected hidden>How did you hear about us</option>
+                <option value="MPublicité sur Internet">MPublicité sur Internet</option>
+                <option value="Internet advertising">Internet advertising</option>
+                <option value="Customer reviews">Customer reviews</option>
+                <option value="Reference">Reference</option>
+                <option value="Customer testimonials">Customer testimonials</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+
+
+
+
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -354,6 +371,15 @@
   </div>
   <br>
 
+  <div class="action-row">
+    <div id="showResult"></div>
+    <form v-bind:action="listView" method="get" class="form-inline float-right">
+      <label class="sr-only" for="inlineFormInputName2">Search</label>
+      <input type="text" class="form-control mb-2 mr-sm-2" id="name" name="name" v-model="formData.search" placeholder="Search">
+      <button type="submit" class="btn btn-success mb-2">Search</button>
+    </form>
+  </div>
+
   <div class="alert alert-success alert-dismissible fade show w-100" role="alert" v-if="saved" id="success-alert">
     <strong>Successfully</strong> saved!
   </div>
@@ -369,8 +395,9 @@
         <th scope="col">#</th>
         <th scope="col">Name</th>
         <th scope="col">Email</th>
-        <!-- <th scope="col">Handle</th> -->
-        <th scope="col">Action</th>
+        <th scope="col">How did you here</th>
+        <th scope="col">Status</th>
+        <th scope="col" class="text-center">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -379,14 +406,16 @@
         <th scope="row" @click="clickItem(item)">{{index + 1}}</th>
         <td @click="clickItem(item)">{{item.fullName}}</td>
         <td @click="clickItem(item)">{{item.emailAddress}}</td>
+        <td @click="clickItem(item)">{{item.howDidYouHearAboutUs}}</td>
+        <td @click="clickItem(item)"><i class="fa fa-circle text-success" aria-hidden="true"></i>&nbsp;&nbsp;Active</td>
         <!-- <td>test</td> -->
-        <td @click="removeItem(item.id)">
+        <td @click="removeItem(item.id)" class="text-center">
           <i class="fa fa-trash" aria-hidden="true" style="color:red;"></i>
         </td>
       </tr>
     </tbody>
   </table>
-<br><br>
+  <br><br>
   <!-- Pegination -->
   <nav aria-label="Page navigation example " class="table-pagination">
     <ul class="pagination justify-content-end">

@@ -22,6 +22,7 @@ parasails.registerPage('userslist', {
 
     formData: {
       id: '0',
+      search: '',
       name: '',
       email: '',
       password: '',
@@ -38,6 +39,11 @@ parasails.registerPage('userslist', {
   //  ║  ║╠╣ ║╣ ║  ╚╦╝║  ║  ║╣
   //  ╩═╝╩╚  ╚═╝╚═╝ ╩ ╚═╝╩═╝╚═╝
   beforeMount: function() {
+
+
+    if (this.filter) {
+      this.formData.search = this.filter.name;
+    }
     //…
   },
   mounted: async function() {

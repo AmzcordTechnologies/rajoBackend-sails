@@ -201,9 +201,6 @@ module.exports = {
       id: inputs.id
     });
 
-    console.log("data");
-    console.log(user);
-
     return exits.success({
       data: user,
     });
