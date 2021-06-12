@@ -23,10 +23,16 @@ module.exports = {
   },
 
 
-  fn: async function () {
+  fn: async function() {
 
     if (this.req.me) {
-      throw {redirect:'/welcome'};
+      throw {
+        redirect: '/welcome'
+      };
+    } else {
+      throw {
+        redirect: '/login'
+      };
     }
 
     return {};
