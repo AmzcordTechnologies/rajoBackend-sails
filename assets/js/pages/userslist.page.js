@@ -31,6 +31,7 @@ parasails.registerPage('userslist', {
       country: '',
       city: '',
       howDidYouHearAboutUs: '',
+      isSuperAdmin: "false",
     }
     //…
   },
@@ -176,6 +177,7 @@ parasails.registerPage('userslist', {
         this.formData.country = item.country;
         this.formData.city = item.city;
         this.formData.howDidYouHearAboutUs = item.howDidYouHearAboutUs;
+        this.formData.isSuperAdmin = (item.isSuperAdmin == true) ? "true" : "false";
 
       } else {
 
@@ -188,6 +190,7 @@ parasails.registerPage('userslist', {
         this.formData.country = "";
         this.formData.city = "";
         this.formData.howDidYouHearAboutUs = "";
+        this.formData.isSuperAdmin = "false";
       }
 
     },

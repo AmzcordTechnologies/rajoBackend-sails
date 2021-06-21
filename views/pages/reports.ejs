@@ -1,0 +1,32 @@
+<div id="reports" v-cloak>
+
+  <div class="container-fluid nav">
+    <i class="fa fa-bar-chart" aria-hidden="true" style="padding-top: 6px;"></i> &nbsp;&nbsp; Reports
+  </div>
+  <br>
+  <br><br>
+  <div class="container-fluid">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active text-dark" data-toggle="tab" href="#home">How did users know</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link  text-dark" data-toggle="tab" href="#menu1">Age Analysis</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link  text-dark" data-toggle="tab" href="#menu2">Registration Timeline</a>
+      </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div class="tab-pane container active" id="home">
+        <div id="barchart_material" style="width: 900px; height: 500px;"></div>
+      </div>
+      <div class="tab-pane container fade" id="menu1">...</div>
+      <div class="tab-pane container fade" id="menu2">...</div>
+    </div>
+  </div>
+
+</div>
+<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>

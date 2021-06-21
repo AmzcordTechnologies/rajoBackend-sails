@@ -328,6 +328,14 @@
             </div>
 
             <div class="form-group">
+              <label for="inputAddress2">Is super admin</label>
+              <select name="cars" id="cars" class="form-control" v-model="formData.isSuperAdmin">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+              </select>
+            </div>
+
+            <div class="form-group">
               <label for="inputAddress2">Gender</label>
               <select name="cars" id="cars" class="form-control" v-model="formData.gender">
                 <option value="male">Male</option>
@@ -348,10 +356,6 @@
                 <option value="Other">Other</option>
               </select>
             </div>
-
-
-
-
 
           </div>
           <div class="modal-footer">
@@ -396,6 +400,7 @@
         <th scope="col">Name</th>
         <th scope="col">Email</th>
         <th scope="col">How did you here</th>
+        <th scope="col">Is super admin</th>
         <th scope="col">Status</th>
         <th scope="col" class="text-center">Action</th>
       </tr>
@@ -407,7 +412,9 @@
         <td @click="clickItem(item)">{{item.fullName}}</td>
         <td @click="clickItem(item)">{{item.emailAddress}}</td>
         <td @click="clickItem(item)">{{item.howDidYouHearAboutUs}}</td>
-        <td @click="clickItem(item)"><i class="fa fa-circle text-success" aria-hidden="true"></i>&nbsp;&nbsp;Active</td>
+        <td @click="clickItem(item)" v-if="item.isSuperAdmin == true" class="text-success"> <i class="fa fa-check"></i></td>
+        <td @click="clickItem(item)" v-if="item.isSuperAdmin == false" class="text-danger"> <i class="fa fa-times"></i></td>
+        <td @click="clickItem(item)"> <i class="fa fa-circle text-success" aria-hidden="true"></i>&nbsp;&nbsp;Active</td>
         <!-- <td>test</td> -->
         <td @click="removeItem(item.id)" class="text-center">
           <i class="fa fa-trash" aria-hidden="true" style="color:red;"></i>

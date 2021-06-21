@@ -12,6 +12,9 @@ module.exports.policies = {
 
   '*': 'is-logged-in',
 
+  'view-userslist': ['is-logged-in', 'is-super-admin'],
+  'view-reports': ['is-logged-in', 'is-super-admin'],
+
   // Bypass the `is-logged-in` policy for:
   'entrance/*': true,
   'account/logout': true,

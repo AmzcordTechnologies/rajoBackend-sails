@@ -45,6 +45,10 @@ module.exports = {
       type: 'string'
     },
 
+    isSuperAdmin: {
+      type: 'string'
+    },
+
   },
 
 
@@ -54,6 +58,15 @@ module.exports = {
 
 
   fn: async function(inputs, exits) {
+
+    console.log(inputs);
+
+    if (inputs.isSuperAdmin == "true") {
+      inputs.isSuperAdmin = true;
+    } else {
+      inputs.isSuperAdmin = false;
+
+    }
 
     var newEmailAddress = inputs.emailAddress;
     var fullName = inputs.name;
@@ -193,6 +206,7 @@ module.exports = {
         city: inputs.city,
         country: inputs.country,
         contact: inputs.contact,
+        isSuperAdmin: inputs.isSuperAdmin,
         howDidYouHearAboutUs: inputs.howDidYouHearAboutUs,
         passwords: await sails.helpers.passwords.hashPassword(inputs.password)
       });
