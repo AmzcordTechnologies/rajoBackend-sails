@@ -5,89 +5,38 @@
   </div>
   <br>
   <br><br>
-  <div class="container-fluid">
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <a class="nav-link active text-dark" data-toggle="tab" href="#home">How did users know</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link  text-dark" data-toggle="tab" href="#menu1">Age Analysis</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link  text-dark" data-toggle="tab" href="#menu2">Registration Timeline</a>
-      </li>
-    </ul>
-
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <div class="tab-pane container active" id="home">
-        <br><br>
-        <div class="container row">
-          <div class="col-5">
-            <input type="date" class="form-control" id="inputEmail4" placeholder="Email">
-          </div>
-          <div class="col-5">
-            <input type="date" class="form-control" id="inputEmail4" placeholder="Email">
-          </div>
-          <div class="col-2">
-            <button type="button" name="button" class="btn btn-success">Filter</button>
-          </div>
-        </div>
-        <br><br>
-        <br><br>
-
-        <div class="container">
-          <img src="/images/Screen Shot 2021-06-22 at 9.50.08 PM.png" alt="" style="width: 80%;">
-        </div>
-
-
+  <div class="container">
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+      <form v-bind:action="listView" method="get" class="">
+          <br><br>
+            <div class="container row">
+              <div class="col-3">
+                <select name="type" id="type" name="type" class="form-control" v-model="type" >
+                  <option value="0">How did you here</option>
+                  <option value="1">By age</option>
+                </select>
+              </div>
+              <div class="col-3">
+                <input type="date" class="form-control" id="fromDate" name="fromDate" placeholder="Email" v-model="from">
+              </div>
+              <div class="col-3">
+                <input type="date" class="form-control" id="toTime" name="toTime" placeholder="Email" v-model="to">
+              </div>
+              <div class="col-3">
+                <button type="submit" class="btn btn-success">Filter</button>
+              </div>
+            </div>
+          <!-- </div> -->
+      </form>
+      <br><br>
+      <br><br>
+      <div class="container ml-10" v-if="chartData.length > 0" style="padding-left:100px">
+        <div id="top_x_div" style="width: 80%; height: 600px;" class="pl-10" style="padding-left:1000px"></div>
       </div>
-      <div class="tab-pane container fade" id="menu1">
-        <br><br>
-        <div class="container row">
-          <div class="col-5">
-            <input type="date" class="form-control" id="inputEmail4" placeholder="Email">
-          </div>
-          <div class="col-5">
-            <input type="date" class="form-control" id="inputEmail4" placeholder="Email">
-          </div>
-          <div class="col-2">
-            <button type="button" name="button" class="btn btn-success">Filter</button>
-          </div>
-        </div>
-        <br><br>
-        <br><br>
-
-        <div class="container">
-          <img src="/images/Screen Shot 2021-06-22 at 9.50.08 PM.png" alt="" style="width: 80%;">
-        </div>
-
-
-      </div>
-      <div class="tab-pane container fade" id="menu2">
-        <br><br>
-        <div class="container row">
-          <div class="col-5">
-            <input type="date" class="form-control" id="inputEmail4" placeholder="Email">
-          </div>
-          <div class="col-5">
-            <input type="date" class="form-control" id="inputEmail4" placeholder="Email">
-          </div>
-          <div class="col-2">
-            <button type="button" name="button" class="btn btn-success">Filter</button>
-          </div>
-        </div>
-        <br><br>
-        <br><br>
-
-        <div class="container">
-          <img src="/images/Screen Shot 2021-06-22 at 9.50.08 PM.png" alt="" style="width: 80%;">
-        </div>
-
-
+      <div class="container alert" v-else>
+        No Data To Show
       </div>
     </div>
   </div>
-
 </div>
 <%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>

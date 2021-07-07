@@ -172,6 +172,13 @@ without necessarily having a billing card.`
       type: 'string'
     },
 
+    dateOfBirth: {
+      type: 'string'
+    },
+
+    age: {
+      type: 'number'
+    },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗

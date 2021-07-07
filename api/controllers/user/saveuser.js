@@ -49,6 +49,10 @@ module.exports = {
       type: 'string'
     },
 
+    dob: {
+      type: 'string'
+    },
+
   },
 
 
@@ -59,6 +63,7 @@ module.exports = {
 
   fn: async function(inputs, exits) {
 
+    var moment = require('moment');
     console.log(inputs);
 
     if (inputs.isSuperAdmin == "true") {
@@ -67,6 +72,14 @@ module.exports = {
       inputs.isSuperAdmin = false;
 
     }
+
+    var date = moment(inputs.dob).format("MM/DD/YYYY")
+
+    var diff = moment(date, "MM/DD/YYYY").month(0).from(moment().month(0))
+
+    diff = diff.split(" ")
+    
+    var age = diff[0];
 
     var newEmailAddress = inputs.emailAddress;
     var fullName = inputs.name;
@@ -208,6 +221,8 @@ module.exports = {
         contact: inputs.contact,
         isSuperAdmin: inputs.isSuperAdmin,
         howDidYouHearAboutUs: inputs.howDidYouHearAboutUs,
+        dateOfBirth: inputs.dob,
+        age: age,
         passwords: await sails.helpers.passwords.hashPassword(inputs.password)
       });
 

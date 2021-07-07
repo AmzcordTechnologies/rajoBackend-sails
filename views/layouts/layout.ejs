@@ -2,7 +2,16 @@
   // In case we're displaying the 404 or 500 page and relevant code in the "custom" hook was not able to run,
   // we make sure `me` exists.  This ensures we don't have to do `typeof` checks below.
   var me = undefined;
+
 } %>
+
+<script>
+  var clicked = true;
+
+  // function o(e) {}
+</script>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -55,7 +64,7 @@
     <div class="sideNav">
       <a class="dropdown-item dropdown" href="/"><b><i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Home<i class="fa fa-chevron-right" aria-hidden="true"></i></b></a>
       <a class="dropdown-item dropdown" href="/userslist"><b><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;User manager<i class="fa fa-chevron-right" aria-hidden="true"></i></b></a>
-      <a class="dropdown-item dropdown" href="/reports"><b><i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Reports<i class="fa fa-chevron-right" aria-hidden="true"></i></b></a>
+      <a class="dropdown-item dropdown" href="/reports"><b><i class="fa fa-bar-chart" aria-hidden="true" @click="onClick()"></i>&nbsp;&nbsp;&nbsp;Reports<i class="fa fa-chevron-right" aria-hidden="true"></i></b></a>
       <a class="dropdown-item dropdown" href="/"><b><i class="fa fa-money" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Banks<i class="fa fa-chevron-right" aria-hidden="true"></i></b></a>
       <a class="dropdown-item dropdown" href="/"><b><i class="fa fa-bell" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Notification<i class="fa fa-chevron-right" aria-hidden="true"></i></b></a>
       <a class="dropdown-item dropdown" href="/"><b><i class="fa fa-question" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;Help<i class="fa fa-chevron-right" aria-hidden="true"></i></b></a>

@@ -108,3 +108,7 @@ i.fa.fa-sign-out {
 span.badge.badge-success {
   margin-top: 20px;
 }
+
+input.form-control.invalied {
+    border: 1px solid red;
+}

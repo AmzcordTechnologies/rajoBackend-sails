@@ -32,7 +32,10 @@ parasails.registerPage('userslist', {
       city: '',
       howDidYouHearAboutUs: '',
       isSuperAdmin: "false",
-    }
+      dob: '',
+    },
+
+    formErrors: {}
     //…
   },
 
@@ -176,6 +179,7 @@ parasails.registerPage('userslist', {
         this.formData.gender = item.gender;
         this.formData.country = item.country;
         this.formData.city = item.city;
+        this.formData.dob = item.dateOfBirth;
         this.formData.howDidYouHearAboutUs = item.howDidYouHearAboutUs;
         this.formData.isSuperAdmin = (item.isSuperAdmin == true) ? "true" : "false";
 
@@ -189,6 +193,7 @@ parasails.registerPage('userslist', {
         this.formData.gender = "";
         this.formData.country = "";
         this.formData.city = "";
+        this.formData.dob = "";
         this.formData.howDidYouHearAboutUs = "";
         this.formData.isSuperAdmin = "false";
       }
@@ -210,11 +215,11 @@ parasails.registerPage('userslist', {
 
       }
 
-      // if (!argins.ammount) {
-      //
-      //   this.formErrors.ammount = true;
-      //
-      // }
+      if (!argins.dob) {
+
+        this.formErrors.dob = true;
+
+      }
 
       if (Object.keys(this.formErrors).length > 0) {
 
